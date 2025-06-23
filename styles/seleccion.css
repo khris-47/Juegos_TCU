@@ -1,5 +1,5 @@
 body {
-    background: url(./img/fondos/fondo_seleccion.png);
+    background: url(/img/fondos/fondo_seleccion.png);
     color: white;
     font-family: 'Segoe UI', sans-serif;
     overflow-x: hidden;
