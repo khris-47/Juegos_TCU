@@ -78,7 +78,7 @@ body {
 
 .card .back {
     border-radius: 5px;
-    background: url(/img/Logo.png) center/contain;
+    background: url('../img/Logo.png') center/contain;
     background-repeat: no-repeat;
 }
 
