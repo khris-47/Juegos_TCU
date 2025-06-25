@@ -38,11 +38,11 @@ function messageVictory() {
 
 // modal para el inicio de la pantalla
 const modalBienvenida = `
-    <div class="modal fade" id="ModalBienvenida" tabindex="-1" aria-hidden="true">
+    <div class="modal fade" id="ModalBienvenida" tabindex="-1"  aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered">
             <div class="modal-content text-center">
-                <div class="modal-header">
-                    <h1 class="modal-title fs-5 w-100"> ¡Bienvenido al Juego de Memoria Version Facil! 😇</h1>
+                <div class="modal-header" style="background-color: cadetblue;">
+                    <h1 class="modal-title fs-5 w-100" > ¡Bienvenido al Juego de Memoria Version Facil! 😇</h1>
                 </div>
                 <div class="modal-body">
                     <p> Esto esta dedicado para que aprendas cuales tipos de embarcacion hay en el golfo de nicoya, mientras te diviertes con nosotros </p>
