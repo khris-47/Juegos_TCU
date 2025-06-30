@@ -38,24 +38,25 @@ function messageVictory() {
 
 // modal para el inicio de la pantalla
 const modalBienvenida = `
-    <div class="modal fade" id="ModalBienvenida" tabindex="-1"  aria-hidden="true">
-        <div class="modal-dialog modal-dialog-centered">
-            <div class="modal-content text-center">
-                <div class="modal-header" style="background-color: cadetblue;">
-                    <h1 class="modal-title fs-5 w-100" > ¡Bienvenido al Juego de Memoria Version Facil! 😇</h1>
-                </div>
-                <div class="modal-body">
-                    <p> Esto esta dedicado para que aprendas cuales tipos de embarcacion hay en el golfo de nicoya, mientras te diviertes con nosotros </p>
-                    <p> En esta version, puedes fallar las veces que quieras</p>
-                    <p> Haz clic en "Comenzar" para iniciar el juego y la música 🎵</p>
-                </div>
-                <div class="modal-footer justify-content-center">
-                    <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Comenzar</button>
-                </div>
-            </div>
-        </div>
+    <div class="modal fade" id="ModalBienvenida" tabindex="-1" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content text-center modal-bienvenida">
+      <div class="modal-header">
+        <h1 class="modal-title fs-4 w-100">¡Bienvenido al Juego de Memoria Versión Fácil! 😇</h1>
+      </div>
+      <div class="modal-body">
+        <p>Esto está dedicado para que aprendas cuáles tipos de embarcación hay en el Golfo de Nicoya, mientras te diviertes con nosotros.</p>
+        <p>En esta versión, puedes fallar las veces que quieras.</p>
+        <p>Haz clic en "Comenzar" para iniciar el juego y la música 🎵</p>
+      </div>
+      <div class="modal-footer justify-content-center">
+        <button type="button" class="btn btn-success btn-lg px-4" data-bs-dismiss="modal">Comenzar</button>
+      </div>
     </div>
+  </div>
+</div>
     `;
+
 
 // $$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
 // Funciones principales

@@ -45,7 +45,7 @@ function messageVictory() {
 const modalBienvenida = `
     <div class="modal fade" id="ModalBienvenida" tabindex="-1" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered">
-            <div class="modal-content text-center">
+            <div class="modal-content text-center modal-bienvenida">
                 <div class="modal-header">
                     <h1 class="modal-title fs-5 w-100"> ¡Bienvenido al Juego de Memoria Version Dificil! 👹</h1>
                 </div>
