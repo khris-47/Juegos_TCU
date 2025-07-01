@@ -68,6 +68,7 @@ const modalBienvenida = `
                 </div>
                 <div class="modal-body">
                     <p> Te daremos una palabra, tienes que saber cual de las tres imagenes es la correcta</p>
+                    <p> Haz click sobre la imagen y arrastrala hacia el centro de la pantalla</p>
                     <p> Haz clic en "Comenzar" para iniciar con el juego y la música 🎵</p>
                 </div>
                 <div class="modal-footer justify-content-center">
