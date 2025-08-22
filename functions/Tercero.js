@@ -458,4 +458,17 @@ function launchConfetti() {
 
 window.addEventListener("DOMContentLoaded", () => {
   mostrarModalBienvenida();
+
+  const checkbox = document.getElementById("checkboxInput");
+
+  // Escucha cambios en el checkbox
+  checkbox.addEventListener("change", () => {
+    if (checkbox.checked) {
+      musica.pause();
+    } else {
+      musica.play();
+    }
+  });
 });
+
+
