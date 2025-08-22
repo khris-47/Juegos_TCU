@@ -85,8 +85,6 @@ const modalBienvenida = `
 // $$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
 
 
-
-
 // funcion encargada de dar la bienvenida al juego
 // tambien, sera encargada de "disparar" la musica, porque en algunos navegadores no lo lee automaticamente
 function mostrarModalBienvenida() {
@@ -215,7 +213,7 @@ function obtenerPalabraAleatoria() {
 
   //  elegir una palabra al azar de la lista d edisponibles
   const seleccion = disponibles[Math.floor(Math.random() * disponibles.length)];
-  
+
   // agregamos la palabra elegida a la list de usadas para no repetirla
   palabrasUsadas.push(seleccion.palabra);
 
@@ -259,14 +257,19 @@ function mostrarOpciones(correcta) {
     img.draggable = true; // hacemos que la imagen sea arrastrable
     img.dataset.palabra = op.palabra; // guardamos la palabra asociada en el dataset para poder leerla al hacer el drop
 
-    // evento que se dispara al comenzar a arrastrar la imagen
-    img.ondragstart = (e) => e.dataTransfer.setData("text", e.target.dataset.palabra);
-
+    // verificamo si la pantalla esta para movil o computadora
+    if (esDispositivoMovil()) {
+      // En movil: Activamos un evento nativo del navegador(Pointer Events), este se dspara cuando e puntero toca la superficie, en moviles equivale a un tap y en escritorio a un click
+      img.addEventListener("pointerdown", () => manejarDropTouch(op.palabra));
+    } else {
+      // En escritorio: activamos el drag and drop
+      img.ondragstart = (e) => e.dataTransfer.setData("text", e.target.dataset.palabra);
+    }
+  
     div.appendChild(img); // insertamos la imagen dentro del div
     opcionesContainer.appendChild(div); // metemos la tarjeta al contenedor principal
   });
 }
-
 
 // ============================
 // Interaccion Drag y Drop
@@ -282,6 +285,16 @@ function prepararDropZone(palabraCorrecta) {
 
   // guardamos la palabra correcta como atributo personalizado (para luego validar el drop)
   dropZone.dataset.respuesta = palabraCorrecta.palabra;
+
+  // verificamos el dispositivo
+  if (esDispositivoMovil()) {
+    // en movil ocultamos visualmente el dropZone
+    dropZone.style.display = "none";
+  } else {
+    // en escritorio se ve normalmente
+    dropZone.style.display = "flex"; // o el display que uses
+  }
+
 }
 
 // manejamos el evento de soltar la imagen sobre la zona de respuesat
@@ -321,6 +334,34 @@ function manejarDrop(e) {
 
 }
 
+
+// manejamos el evento para celulares, la idea es que resiva la palabra seleccionada al hacer touch
+// luego de ello ver si coincide con la respuesta esperada
+function manejarDropTouch(palabra) {
+
+  if (!dropActivo) return; // evitamos que se reisten multiples toques en paralelo
+  dropActivo = false; // bloqueamos la interaccion hasta la siguiente ronda
+
+  // obtenemos la respuesat correcta almacenada en el contenedor principal en el dropZone
+  const respuesta = document.getElementById("dropZone").dataset.respuesta?.trim();
+
+  // verificamos la respuesta
+  if (palabra === respuesta) {
+    aciertos++;// aumentamos el acierto
+    efectoAcierto();
+  } else {
+    // usuario falla
+    efectoFallo();
+  }
+
+  rondaActual++;
+  setTimeout(() => {
+    dropActivo = true; // vuelvemos a activar la interracion
+    iniciarJuego(); // iniciamos una nueva ronda
+  }, 1000);
+}
+
+
 // Configura los eventos drag & drop en la zona de destino
 function configurarEventos() {
 
@@ -334,7 +375,12 @@ function configurarEventos() {
   dropZone.ondrop = manejarDrop;
 }
 
-
+// Detecta si el usuario esta en un dispositivo movil
+// Evalua el userAgent del navegador buscando coincidencias con patrones de moviles
+// Retorna true si el navegador pertenece a un dispositivo movil o tablet
+function esDispositivoMovil() {
+  return /Mobi|Android|iPhone|iPad|iPod/i.test(navigator.userAgent);
+}
 
 // ============================
 // Efectos Visuales
@@ -373,7 +419,6 @@ function efectoFallo() {
     document.body.classList.remove('shake-error');
   }, 1000);
 }
-
 
 // render de confetis para cuando gane 
 function launchConfetti() {

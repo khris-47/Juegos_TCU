@@ -117,10 +117,11 @@ canvas.confetti-canvas {
   /* rojo con transparencia */
 }
 
-
 @media (max-width: 768px) {
   .zona-juego {
     padding: 1rem;
+    max-width: 90%;
+    margin: auto;
   }
 
   .drop-zone {
@@ -137,7 +138,7 @@ canvas.confetti-canvas {
   }
 
   #opcionesContainer {
-    flex-direction: column;
+    flex-direction: row;
     gap: 1rem;
     align-items: center;
   }
