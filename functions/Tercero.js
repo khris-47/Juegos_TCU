@@ -79,6 +79,26 @@ const modalBienvenida = `
     </div>
     `;
 
+const modalBienvenidaMovil = `
+    <div class="modal fade" id="ModalBienvenida" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content text-center modal-bienvenida">
+                <div class="modal-header">
+                    <h1 class="modal-title fs-5 w-100"> ¡Bienvenido al Juego de Adivinanza! </h1>
+                </div>
+                <div class="modal-body">
+                    <p> Te mostraremos una palabra y deberás elegir la imagen correcta entre las tres opciones.</p>
+                    <p> Solo toca la imagen que creas correcta para responder.</p>
+                    <p> Pulsa en "Comenzar" para iniciar el juego y activar la música 🎵</p>
+                </div>
+                <div class="modal-footer justify-content-center">
+                    <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Comenzar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    `;
+
 
 // $$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
 // Funciones principales
@@ -89,8 +109,9 @@ const modalBienvenida = `
 // tambien, sera encargada de "disparar" la musica, porque en algunos navegadores no lo lee automaticamente
 function mostrarModalBienvenida() {
 
-  // insertamos el modal de bienvenida al final del body
-  document.body.insertAdjacentHTML("beforeend", modalBienvenida);
+  // dependiendo del dispositivo, insertamos el modal correspondiente
+  const modalHTML = esDispositivoMovil() ? modalBienvenidaMovil : modalBienvenida;
+  document.body.insertAdjacentHTML("beforeend", modalHTML);
 
   // creamos la instancia para mostrar ese modal recien insertado
   const bienvenidaModal = new bootstrap.Modal(document.getElementById('ModalBienvenida'));

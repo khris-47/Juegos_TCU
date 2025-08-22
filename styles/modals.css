@@ -8,7 +8,6 @@
     box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
     background: linear-gradient(135deg, #e0f7fa, #fce4ec);
     font-family: 'Comic Neue', sans-serif;
-    /* Animación de burbuja */
 }
 
 .modal-bienvenida::before {
@@ -157,7 +156,7 @@ Felicitaciones
     /* Azul suave */
     background: linear-gradient(135deg, #ffffff, #e3f2fd);
     box-shadow: 0 8px 24px rgba(74, 144, 226, 0.3);
-    font-family: 'Fredoka One', cursive;
+    font-family: 'Nunito', sans-serif;
     overflow: hidden;
     text-align: center;
     color: #0d3b66;
