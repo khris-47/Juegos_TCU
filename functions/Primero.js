@@ -63,6 +63,8 @@ const modalBienvenida = `
 // $$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
 
 
+
+
 // render de confetis para cuando gane 
 function launchConfetti() {
     // libreria externa de canvas
@@ -79,17 +81,17 @@ function activate(evento) {
 
     // se verifican dos cosas, uno, que no se hayan volteado ya dos cartas, y que a lo que se le hixo el clic tnega la clase "card"
     if (currentMove < 2 && evento.currentTarget.classList.contains("card")) {
-        
+
         evento.currentTarget.classList.add("active"); // a la carta que se le hizo clic, le damos la clase active, (desde el css hacemos que rote en 180grados)
 
         // revisamos si la card actual no ha sido ya seleccionada (para evitar un doble click a la misma)
         if (!selectedCards[0] || selectedCards[0] !== evento.currentTarget) {
-            
+
             selectedCards.push(evento.currentTarget); // guardamos el card seleccionado
 
             // verificamos si este fue el segundo movimiento
             if (++currentMove === 2) {
-                
+
                 tries++; // aumentamos la cantidad de intentos
 
                 // obtenemos el contenido HTML de la parte frontal de las dos cards
@@ -174,12 +176,12 @@ function inicializarJuego() {
     // seleccionamos el contenedor donde van las cartas
     const container = document.querySelector("#cards-container");
     container.innerHTML = ""; // limpiamos el contenedor 
-    
+
     // inicializamos todas las variables necesarias en 0
-    cards = [];         
-    valuesUsed = [];   
-    currentMove = 0;   
-    selectedCards = []; 
+    cards = [];
+    valuesUsed = [];
+    currentMove = 0;
+    selectedCards = [];
     success = 0;
     tries = 0;
 
@@ -200,13 +202,13 @@ function inicializarJuego() {
 
         //agregamos la card al contenedor
         container.appendChild(card); // recordemos que lo tenemos como #cards-container ,  asi quenos aprovechamos de esa palabr reservada
-        
+
         randomValue(); // generamos un valor aleatorio para esa carta
 
         // insertamos una imagen dentro de la cara (la parte boca abajo) de la card, esa imagen de debe de llamar img#, 
         // reemplazando, evidentemente, # por un numero, y usaremos ese numero como una referencia
         card.querySelector(".face").innerHTML = `<img src="img/primerJuego/img${valuesUsed[i] + 1}.png" alt="img${valuesUsed[i] + 1}" />`;
-        
+
         // le agregamos un evento de click a la carta
         card.addEventListener("click", activate);
 
@@ -229,9 +231,9 @@ function mostrarModalBienvenida() {
     // escuchar los eventos al momento en el que se cierra
     const modalElement = document.getElementById('ModalBienvenida');
     modalElement.addEventListener('hidden.bs.modal', () => {
-       
+
         // inicializamos la musica de fondo
-        musica.loop = true; 
+        musica.loop = true;
         musica.volume = 0.15;
         musica.play();
         inicializarJuego();
@@ -240,14 +242,24 @@ function mostrarModalBienvenida() {
 }
 
 
-
 // $$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
 // Inicializacion 
 // $$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
 
 window.addEventListener("DOMContentLoaded", () => {
     mostrarModalBienvenida();
+
+    const checkbox = document.getElementById("checkboxInput");
+
+    checkbox.addEventListener("change", () => {
+        if (checkbox.checked) {
+            musica.pause();
+        } else {
+            musica.play();
+        }
+    });
+
 });
 
- 
+
 

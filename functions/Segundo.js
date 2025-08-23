@@ -314,4 +314,15 @@ function mostrarModalBienvenida() {
 
 window.addEventListener("DOMContentLoaded", () => {
     mostrarModalBienvenida();
+
+    const checkbox = document.getElementById("checkboxInput");
+
+    checkbox.addEventListener("change", () => {
+    if (checkbox.checked) {
+      musica.pause();
+    } else {
+      musica.play();
+    }
+  });
+
 });
