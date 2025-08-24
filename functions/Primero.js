@@ -62,6 +62,23 @@ const modalBienvenida = `
 // Funciones principales
 // $$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
 
+// función para reiniciar sin recargar la página
+function reiniciarJuego() {
+    // cerrar el modal de felicitaciones si está abierto
+    const modalElement = document.getElementById('ModalFelicitaciones');
+    const modalInstance = bootstrap.Modal.getInstance(modalElement);
+    if (modalInstance) {
+        modalInstance.hide();
+    }
+
+    // reiniciar música
+    musica.pause();
+    musica.currentTime = 0;
+    musica.play();
+
+    // reiniciar juego
+    inicializarJuego();
+}
 
 
 
@@ -149,7 +166,6 @@ function activate(evento) {
         }
     }
 }
-
 
 
 // asignamos un valor aleatoria (basado en el total de cards) a las cards
@@ -258,6 +274,11 @@ window.addEventListener("DOMContentLoaded", () => {
             musica.play();
         }
     });
+
+    const btn = document.getElementById("btnReiniciar");
+    if (btn) {
+        btn.addEventListener("click", reiniciarJuego);
+    }
 
 });
 

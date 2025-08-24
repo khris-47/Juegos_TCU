@@ -105,6 +105,32 @@ const modalBienvenidaMovil = `
 // $$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
 
 
+function reiniciarJuego() {
+
+    // cerrar el modal de felicitaciones si está abierto
+    const modalFelicitaciones = document.getElementById('ModalFelicitaciones');
+    const modalFelicitacionesInstance = bootstrap.Modal.getInstance(modalFelicitaciones);
+    if (modalFelicitacionesInstance) {
+        modalFelicitacionesInstance.hide();
+    }
+
+    // cerrar modal de derrota
+    const modalDerrota = document.getElementById('ModalDerrota');
+    const modalDerrotaInstance = bootstrap.Modal.getInstance(modalDerrota);
+    if (modalDerrotaInstance) {
+        modalDerrotaInstance.hide();
+    }
+
+    rondaActual = 0;
+    aciertos = 0;
+    palabrasUsadas = []; 
+    dropActivo = true; 
+
+    // reiniciar juego
+    configurarEventos();
+    iniciarJuego();
+}
+
 // funcion encargada de dar la bienvenida al juego
 // tambien, sera encargada de "disparar" la musica, porque en algunos navegadores no lo lee automaticamente
 function mostrarModalBienvenida() {
@@ -452,6 +478,8 @@ function launchConfetti() {
 }
 
 
+
+
 // $$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
 // Inicializacion 
 // $$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
@@ -469,6 +497,12 @@ window.addEventListener("DOMContentLoaded", () => {
       musica.play();
     }
   });
+
+  // Seleccionar todos los botones con la clase .btn-reiniciar
+    const reiniciarButtons = document.querySelectorAll(".btn-reiniciar");
+    reiniciarButtons.forEach(btn => {
+        btn.addEventListener("click", reiniciarJuego);
+    });
 });
 
 

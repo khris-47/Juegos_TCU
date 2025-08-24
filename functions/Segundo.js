@@ -307,6 +307,31 @@ function mostrarModalBienvenida() {
     });
 }
 
+function reiniciarJuego() {
+
+    // cerrar el modal de felicitaciones si está abierto
+    const modalFelicitaciones = document.getElementById('ModalFelicitaciones');
+    const modalFelicitacionesInstance = bootstrap.Modal.getInstance(modalFelicitaciones);
+    if (modalFelicitacionesInstance) {
+        modalFelicitacionesInstance.hide();
+    }
+
+    // cerrar modal de derrota
+    const modalDerrota = document.getElementById('ModalDerrota');
+    const modalDerrotaInstance = bootstrap.Modal.getInstance(modalDerrota);
+    if (modalDerrotaInstance) {
+        modalDerrotaInstance.hide();
+    }
+
+
+    // reiniciar música
+    musica.pause();
+    musica.currentTime = 0;
+    musica.play();
+
+    // reiniciar juego
+    inicializarJuego();
+}
 
 // $$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
 // Inicializacion 
@@ -324,5 +349,11 @@ window.addEventListener("DOMContentLoaded", () => {
       musica.play();
     }
   });
+
+  // Seleccionar todos los botones con la clase .btn-reiniciar
+    const reiniciarButtons = document.querySelectorAll(".btn-reiniciar");
+    reiniciarButtons.forEach(btn => {
+        btn.addEventListener("click", reiniciarJuego);
+    });
 
 });
