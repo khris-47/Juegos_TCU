@@ -47,10 +47,10 @@ const modalBienvenida = `
         <div class="modal-dialog modal-dialog-centered">
             <div class="modal-content text-center modal-bienvenida">
                 <div class="modal-header">
-                    <h1 class="modal-title fs-5 w-100"> ¡Bienvenido al Juego de Memoria Version Dificil! 👹</h1>
+                    <h1 class="modal-title fs-5 w-100"> ¡Bienvenido al Juego de Memoria Versión Difícil! 👹</h1>
                 </div>
                 <div class="modal-body">
-                    <p> Aqui, tienes solo ${totalVidas} oportunidades para conseguir la victoria</p>
+                    <p> Aquí, tienes solo ${totalVidas} oportunidades para conseguir la victoria</p>
                     <p>Haz clic en "Comenzar" para iniciar el juego y la música 🎵</p>
                 </div>
                 <div class="modal-footer justify-content-center">

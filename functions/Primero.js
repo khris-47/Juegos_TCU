@@ -32,7 +32,7 @@ function messageVictory() {
     return `
         <p>🤯 Has completado el juego en ${tries} intentos 🤯, ¡increíble!</p>
         <p> Puedes volver a intentarlo y tratar de mejorar tu récord. 😏 </p>
-        <p> O puedes jugar la version dificil y demostrar de que estas hecho 💪😎</p>
+        <p> O puedes jugar la versión difícil y demostrar de que estás hecho 💪😎</p>
         <p> <b>Muchas gracias por jugar, esperamos que te hayas divertido 🥰</b></p>`;
 }
 

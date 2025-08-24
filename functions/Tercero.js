@@ -67,8 +67,8 @@ const modalBienvenida = `
                     <h1 class="modal-title fs-5 w-100"> ¡Bienvenido al Juego de Adivinanza! </h1>
                 </div>
                 <div class="modal-body">
-                    <p> Te daremos una palabra, tienes que saber cual de las tres imagenes es la correcta</p>
-                    <p> Haz click sobre la imagen y arrastrala hacia el centro de la pantalla</p>
+                    <p> Te daremos una palabra, tienes que saber cuál de las tres imágenes es la correcta</p>
+                    <p> Haz clic sobre la imagen y arrastrala hacia el centro de la pantalla</p>
                     <p> Haz clic en "Comenzar" para iniciar con el juego y la música 🎵</p>
                 </div>
                 <div class="modal-footer justify-content-center">
